@@ -1,6 +1,8 @@
 CREATE DATABASE football_ticket_booking;
 
 -- creating table 
+
+-- USERS TABLE
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
   full_name VARCHAR(50),
@@ -9,6 +11,7 @@ CREATE TABLE users (
   phone_number VARCHAR(15)
 );
 
+-- MATCHES TABLE
 CREATE TABLE matches (
   match_id SERIAL PRIMARY KEY,
   fixture VARCHAR(50),
@@ -17,6 +20,8 @@ CREATE TABLE matches (
   match_status VARCHAR(20)
 );
 
+
+-- BOOKINGS TABLE
 CREATE TABLE bookings(
   booking_id SERIAL PRIMARY KEY,
   user_id INT REFERENCES users(user_id),
@@ -27,6 +32,7 @@ CREATE TABLE bookings(
 );
 
 
+-- DEMO USERS DATA
 INSERT INTO users
 (user_id, full_name, email, role, phone_number)
 VALUES
@@ -39,7 +45,7 @@ VALUES
 (4, 'Jannat Ara', 'jannat@mail.com', 'Football Fan', NULL);
 
 
-
+-- DEMO MATCH DATA
 INSERT INTO matches
 (match_id, fixture, tournament_category, base_ticket_price, match_status)
 VALUES
@@ -54,6 +60,7 @@ VALUES
 (105, 'Juventus vs Roma', 'Serie A', 80, 'Available');
 
 
+-- DEMO BOOKING DATA
 INSERT INTO bookings
 (booking_id, user_id, match_id, seat_number, payment_status, total_cost)
 VALUES
